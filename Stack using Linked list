@@ -1,0 +1,117 @@
+[12:45, 10/4/2021] Yash Viit: #include <iostream>
+
+using namespace std;
+
+class node
+{
+public:
+    int data;
+    node *next;
+    node *top = NULL;
+
+    void push(int n)
+    {
+        node *tmp = new node;
+
+        tmp->data = n;
+
+        if (top == NULL)
+
+            tmp->next = NULL;
+
+        else
+
+            tmp->next = top;
+
+        top = tmp;
+    }
+
+    void display()
+    {
+
+        node *tmp = top;
+
+        if (top == NULL)
+
+            cout << "Linked list is empty";
+
+        else
+
+        {
+
+            while (tmp != NULL)
+
+            {
+
+                cout << tmp->data << " ";
+
+                tmp = tmp->next;
+            }
+        }
+    }
+    void pop()
+    {
+
+        if (top == NULL)
+
+            cout << "stack is empty";
+
+        else
+
+        {
+
+            node *tmp = top;
+
+            cout << "deleted node: " << tmp->data;
+
+            top = tmp->next;
+
+            delete (tmp);
+        }
+    }
+};
+
+int main()
+{
+    int choice, value;
+    node s1;
+    while (1)
+
+    {
+
+        cout << "1. Push" << endl
+             << "2. Pop" << endl
+
+             << "3. Display" << endl
+             << "4. exit" << endl;
+
+        cout << "Enter your choice: ";
+
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "enter value: ";
+
+            cin >> value;
+            s1.push(value);
+            break;
+
+        case 2:
+        {
+            s1.pop();
+            cout << endl;
+            break;
+        }
+        case 3:
+            s1.display();
+            cout << endl;
+            break;
+        default:
+          exit(0);
+            
+        }
+    }
+    return 0;
+}
